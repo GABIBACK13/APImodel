@@ -62,6 +62,9 @@ class User extends Model {
       }
     });
   }
+  passwordValidate(password) {
+    return bcryptjs.compare(password, this.password_hash);
+  }
 }
 
 module.exports = User;
