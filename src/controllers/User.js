@@ -15,7 +15,7 @@ class UserController {
   async index(req, res) {
     try {
       const users = await User.findAll();
-      return res.json(users);
+      return res.json({adminId: req.userId, email: req.userEmail, users });
 
     } catch (error) {
       console.error("Erro ao buscar dados", error);
