@@ -3,11 +3,11 @@ const { Aluno } = require("../models");
 async function criarAluno() {
   try {
     const novoAluno = await Aluno.create({
-      nome: "João da Silva",
+      nome: "José da Silva",
       turma: "3A",
-      email: "info@aluno.com",
-      idade: 22,
-      media: 7.5,
+      email: "dado@aluno.com",
+      idade: 27,
+      media: 7.8,
     });
 
     console.log("aluno criado:", novoAluno.toJSON());
@@ -15,5 +15,11 @@ async function criarAluno() {
     console.error("Erro ao criar aluno:", error);
   }
 }
-
-criarAluno();
+ async function listarAlunos() {
+  try {
+    const alunos = await Aluno.findAll();
+    console.log("Alunos:", alunos.map((aluno) => aluno.toJSON()));
+  } catch (error) {
+    console.error("Erro ao listar alunos:", error);
+  }
+}

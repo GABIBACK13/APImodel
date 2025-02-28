@@ -5,25 +5,33 @@ class Aluno extends Model {
     super.init(
       {
         nome: {
-          type: DataTypes.STRING, 
+          type: DataTypes.STRING,
           allowNull: false,
         },
         turma: {
-          type: DataTypes.STRING, 
+          type: DataTypes.STRING,
           allowNull: false,
         },
         email: {
-          type: DataTypes.STRING, 
+          type: DataTypes.STRING,
           allowNull: false,
           unique: true,
         },
         idade: {
-          type: DataTypes.INTEGER, 
+          type: DataTypes.INTEGER,
           allowNull: false,
+          validate: {
+            min: 12,
+            max: 120,
+          },
         },
         media: {
-          type: DataTypes.FLOAT, 
+          type: DataTypes.FLOAT,
           allowNull: false,
+          validate: {
+            min: 0,
+            max: 10,
+          },
         },
       },
       {
