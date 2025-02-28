@@ -20,7 +20,9 @@ class User extends Model {
           type: DataTypes.STRING,
           allowNull: false,
           defaultValue: "",
-          unique: true,
+          unique: {
+            msg: "Email já cadastrado",
+          },
           validate: {
             isEmail: {
               msg: "Email inválido",
@@ -35,6 +37,7 @@ class User extends Model {
         password: {
           type: DataTypes.VIRTUAL,
           allowNull: false,
+          defaultValue: "",
           validate: {
             len: {
               args: [7, 50],
