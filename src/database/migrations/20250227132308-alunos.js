@@ -10,40 +10,40 @@ module.exports = {
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
-    },
-    nome: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    turma: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    email: {
-      type: Sequelize.STRING,
-      allowNull: false,
-      unique: true,
-    },
-    idade: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
-      validate: {
-        min: 12,
-        max: 120,
       },
-    },
-    media: {
-      type: Sequelize.FLOAT,
-      allowNull: false,
-      validate: {
-        min: 0,
-        max: 10,
+      nome: {
+        type: Sequelize.STRING,
+        allowNull: false,
       },
+      turma: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      email: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true,
+      },
+      idade: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        validate: {
+          min: 12,
+          max: 120,
+        },
+      },
+      media: {
+        type: Sequelize.FLOAT,
+        allowNull: false,
+        validate: {
+          min: 0,
+          max: 10,
+        },
+      },
+      createdAt: Sequelize.DATE,
+      updatedAt: Sequelize.DATE,
+    });
     },
-    createdAt: Sequelize.DATE,
-    updatedAt: Sequelize.DATE,
-  });
-  },
 
   async down (queryInterface, Sequelize) {
 

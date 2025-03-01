@@ -14,7 +14,7 @@ class UserController {
 
   async index(req, res) {
     try {
-      const users = await User.findAll();
+      const users = await User.findAll({attributes: ['id', 'email', 'nome']});
       return res.json({adminId: req.userId, email: req.userEmail, users });
 
     } catch (error) {
@@ -28,7 +28,8 @@ class UserController {
       const { id } = req.params;
       if (id) {
         const user = await User.findByPk(id);
-        return res.json(user);
+        const {nome, email} = user;
+        return res.json({id, nome, email});
       }
       /* 
       const {key, search} = req.query;
@@ -46,19 +47,14 @@ class UserController {
 
   async update(req, res) {
     try {
-      if (!req.params.id) {
-        return res.status(400).json({
-          errors: ['ID não enviado'],
-        });
-      }
-      const user = await User.findByPk(req.params.id);
+      const user = await User.findByPk(req.userId);
       if (!user) {
         return res.status(400).json({
           errors: ['Usuario não encontrado'],
         });
       }
-      const erase = await user.update(req.body);
-      return res.json(erase);
+      const newUser = await user.update(req.body);
+      return res.json(newUser);
       
     } catch (error) {
       console.error("Erro ao Editar-PUT- user", error);
@@ -68,12 +64,7 @@ class UserController {
 
   async delete(req, res) {
     try {
-      if (!req.params.id) {
-        return res.status(400).json({
-          errors: ['ID não enviado'],
-        });
-      }
-    const user =   await User.findByPk(req.params.id);
+    const user =   await User.findByPk(req.userId);
       if (!user) {
         return res.status(400).json({
           errors: ['Usuario não encontrado'],

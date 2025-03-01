@@ -6,7 +6,13 @@ class Aluno extends Model {
       {
         nome: {
           type: DataTypes.STRING,
-          allowNull: false,
+          defaultValue: '',
+          validate: {
+            len: {
+              args: [3, 255],
+              msg: 'Nome precisa ter entre 3 a 255 caracteres',
+            }
+          },
         },
         turma: {
           type: DataTypes.STRING,
@@ -14,7 +20,12 @@ class Aluno extends Model {
         },
         email: {
           type: DataTypes.STRING,
-          allowNull: false,
+          defaultValue: '',
+          validate: {
+            isEmail: {
+              msg: 'email Inválido',
+            }
+          },
           unique: true,
         },
         idade: {
