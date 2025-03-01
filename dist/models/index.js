@@ -1,4 +1,4 @@
-const { Sequelize } = require("sequelize");
+"use strict";const { Sequelize } = require("sequelize");
 const dbConfig = require("../config/database");
 
 const sequelize = new Sequelize(dbConfig.development);

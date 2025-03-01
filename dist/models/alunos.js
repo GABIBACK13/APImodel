@@ -1,4 +1,4 @@
-const { DataTypes, Model } = require("sequelize");
+"use strict";const { DataTypes, Model } = require("sequelize");
 
 class Aluno extends Model {
   static init(sequelize) {

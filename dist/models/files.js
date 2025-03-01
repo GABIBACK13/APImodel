@@ -1,6 +1,6 @@
-const { DataTypes, Model } = require("sequelize");
+"use strict"; function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }const { DataTypes, Model } = require("sequelize");
 
-import appConfig from '../config/app';
+var _app = require('../config/app'); var _app2 = _interopRequireDefault(_app);
 
 class File extends Model {
   static init(sequelize) {
@@ -26,7 +26,7 @@ class File extends Model {
         url: {
           type: DataTypes.VIRTUAL,
           get() {
-            return `${appConfig.url}/images/${this.getDataValue('filename')}`
+            return `${_app2.default.url}/images/${this.getDataValue('filename')}`
           },
         },
       },

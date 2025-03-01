@@ -1,11 +1,12 @@
 import express from 'express';
-import './src/models/index';
+import {resolve} from 'path';
+import './models/index';
 
-import homeRoutes from './src/routes/homeRoute';
-import userRoutes from './src/routes/userRoute';
-import tokensRoutes from './src/routes/tokenRoutes';
-import alunoRoutes from './src/routes/alunoRoute';
-import archiveRoutes from './src/routes/archiveRoute';
+import homeRoutes from './routes/homeRoute';
+import userRoutes from './routes/userRoute';
+import tokensRoutes from './routes/tokenRoutes';
+import alunoRoutes from './routes/alunoRoute';
+import archiveRoutes from './routes/archiveRoute';
 
 class App {
   constructor() {
@@ -16,6 +17,7 @@ class App {
   middlewares() {
     this.app.use(express.urlencoded({extended: true}));
     this.app.use(express.json());
+    this.app.use(express.static(resolve(__dirname, 'uploads')));
   }
   routes() {
   this.app.use('/', homeRoutes);
