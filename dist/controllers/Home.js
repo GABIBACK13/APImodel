@@ -4,7 +4,7 @@
       return res.json(null);
 
     } catch (error) {
-      console.error("Erro ao criar aluno:", error);
+      console.error("Erro ao acessar a API:", error);
     }
   }
 }
