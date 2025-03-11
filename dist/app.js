@@ -11,7 +11,6 @@ var _userRoute = require('./routes/userRoute'); var _userRoute2 = _interopRequir
 var _tokenRoutes = require('./routes/tokenRoutes'); var _tokenRoutes2 = _interopRequireDefault(_tokenRoutes);
 var _alunoRoute = require('./routes/alunoRoute'); var _alunoRoute2 = _interopRequireDefault(_alunoRoute);
 var _archiveRoute = require('./routes/archiveRoute'); var _archiveRoute2 = _interopRequireDefault(_archiveRoute);
-var _console = require('console');
 
 const limiter = _expressratelimit2.default.call(void 0, {
   windowMs: 1000 * 60 * 60 * 12,
@@ -38,7 +37,9 @@ class App {
   }
   middlewares() {
     this.app.use(_cors2.default.call(void 0, corsOptions));
-    this.app.use(_helmet2.default.call(void 0, ));
+    this.app.use(_helmet2.default.call(void 0, {
+      crossOriginEmbedderPolicy: false,
+    }));
     this.app.use(limiter);
     this.app.use(_express2.default.urlencoded({extended: true}));
     this.app.use(_express2.default.json());

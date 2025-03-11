@@ -11,7 +11,6 @@ import userRoutes from './routes/userRoute';
 import tokensRoutes from './routes/tokenRoutes';
 import alunoRoutes from './routes/alunoRoute';
 import archiveRoutes from './routes/archiveRoute';
-import { error } from 'console';
 
 const limiter = rateLimiting({
   windowMs: 1000 * 60 * 60 * 12,
@@ -38,7 +37,9 @@ class App {
   }
   middlewares() {
     this.app.use(cors(corsOptions));
-    this.app.use(helmet());
+    this.app.use(helmet({
+      crossOriginEmbedderPolicy: false,
+    }));
     this.app.use(limiter);
     this.app.use(express.urlencoded({extended: true}));
     this.app.use(express.json());
