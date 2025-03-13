@@ -30,7 +30,7 @@ class AlunoController {
         order: [["id", "DESC"], [File, "id", "DESC"]],
         include: { 
           model: File,
-          attributes: ["filename", "id"],
+          attributes: ["filename", "id", "url"],
         },
       });
       res.json(aluno);
