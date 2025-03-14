@@ -9,7 +9,7 @@ const router = new Router();
 // router.get('/:id', userController.show);
 // não deveria existir
 
-router.post("/", userController.store);
+// router.post("/", userController.store);
 router.put("/", loginRequired, userController.update);
 router.delete("/", loginRequired, userController.delete);
 
